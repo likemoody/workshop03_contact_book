@@ -1,0 +1,8 @@
+skyscraper/logins.py
+logins.py
+.idea/*
+.idea/
+__pycache__/
+rooms/migrations/
+notes.txt
+.DS_Store
