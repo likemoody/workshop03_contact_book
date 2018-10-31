@@ -55,7 +55,7 @@ ROOT_URLCONF = 'contactbook.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,4 +122,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'                             # where to serve ALL STATIC files on the web
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')      # where to store ALL STATIC files on the server side
+
+MEDIA_URL = '/media/'                               # where to serve MEDIA files on the web
+MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')     # where to store MEDIA files on the server side

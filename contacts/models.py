@@ -5,7 +5,8 @@ class Person(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     description = models.CharField(max_length=512, blank=False)
-    profile_img = models.ImageField(upload_to='profile_images', blank=False)
+    profile_img = models.ImageField(upload_to='profile_images/', blank=True)
+    group = models.ManyToManyField('Group')
 
     def __repr__(self):
         return f'Person({self.first_name})'
@@ -56,11 +57,10 @@ class Email(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=32)
-    person = models.ManyToManyField(Person)
 
     def __repr__(self):
-        return f'Group({self.name})'
+        return f'{self.name}'
 
     def __str__(self):
-        return f'Group({self.name})'
+        return f'{self.name}'
 
