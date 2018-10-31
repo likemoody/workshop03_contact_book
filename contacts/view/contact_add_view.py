@@ -6,8 +6,8 @@ from ..models import Group
 from ..forms import PersonAddForm
 
 
-class PersonAdd(View):
-    template_name = 'contact_list.html'
+class ContactAdd(View):
+    template_name = 'contact_add.html'
 
     def get(self, request):
         groups = [group.name for group in Group.objects.all()]  # TODO issue no 1
