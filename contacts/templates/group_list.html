@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Contact book | Home {% endblock title %}
+
+{% block content %}
+    <div class="col-md-12">
+        <table class="table table-striped no-top-border">
+            <thead>
+                <tr>
+                    <th scope="col" class="column-fit text-secondary">No</th>
+                    <th scope="col" class="text-secondary">Name</th>
+                    <th scope="col" class="column-max text-secondary"></th>
+                    <th scope="col" class="column-max text-secondary"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for group in groups %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><b>{{ group.name }}</b></td>
+                        <td><a href="#" class="btn btn-outline-primary" id="edit">Edit</a></td>
+                        <td><a href="#" class="btn btn-outline-danger" id="delete">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+{%  endblock %}

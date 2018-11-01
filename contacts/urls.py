@@ -17,17 +17,22 @@ from .view import (contact_list_view,
                    contact_add_view,
                    contact_info_view,
                    contact_edit_view,
-                   contact_delete_view)
+                   contact_delete_view,
+                   group_list_view)
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # Contacts
     path('', contact_list_view.ContactList.as_view(), name='home'),
     path('new/', contact_add_view.ContactAdd.as_view(), name='contact-new'),
     path('show/<int:cid>', contact_info_view.ContactInfo.as_view(), name='contact-info'),
     path('modify/', contact_edit_view.ContactEdit.as_view(), name='contact-edit'),
     path('delete/<int:cid>', contact_delete_view.contact_delete, name='contact-delete'),
+
+    # Groups
+    path('groups', group_list_view.GroupList.as_view(), name='group-list'),
 ]
 
 if settings.DEBUG:
