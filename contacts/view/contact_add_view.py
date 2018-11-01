@@ -18,8 +18,7 @@ class ContactAdd(View):
     def post(self, request):
         form = PersonAddForm(request.POST, request.FILES)
         if form.is_valid():
-            print(':: Person added ::')
-            print(request.FILES)
+            print(':: Contact added to database ::')
             form.save()
             messages.success(request, 'Saved successfully')
             return redirect('home')

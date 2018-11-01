@@ -12,12 +12,12 @@
 </head>
 <body>
     <div class="container">
-{#        {% include 'navbar.html' %}#}
-{#        {% if messages %}#}
-{#        <div class="alert alert-info">#}
-{#            {% for message in messages %}{{ message }}{% endfor %}#}
-{#        </div>#}
-{#        {% endif %}#}
+        {% include 'navbar.html' %}
+        {% if messages %}
+        <div class="alert alert-info">
+            {% for message in messages %}{{ message }}{% endfor %}
+        </div>
+        {% endif %}
 
         {% block content %}
         {% endblock content %}

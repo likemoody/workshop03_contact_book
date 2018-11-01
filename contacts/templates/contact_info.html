@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Contact details {% endblock %}
+
+{% block content %}
+    <h2>{{ contact.first_name }} {{ contact.last_name }}</h2>
+    <div>
+        {% if contact.description %}
+        <p><b>Description:</b> {{ contact.description }}</p>
+        {% endif %}
+        <p><b>Group:</b> {{ group }}</p>
+    </div>
+    <a href="{% url 'contact-edit' %}?cid={{ contact.id }}" class="btn btn-outline-primary" id="edit">Edit</a>
+    <a href="{% url 'contact-delete' contact.id %}" class="btn btn-outline-danger" id="delete">Delete</a>
+{% endblock %}

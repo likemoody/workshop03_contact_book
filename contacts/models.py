@@ -4,7 +4,7 @@ from django.db import models
 class Person(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
-    description = models.CharField(max_length=512, blank=False)
+    description = models.CharField(max_length=512, blank=True)
     profile_img = models.ImageField(upload_to='profile_images/', blank=True)
     group = models.ManyToManyField('Group')
 
