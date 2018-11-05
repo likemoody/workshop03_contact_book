@@ -18,7 +18,8 @@ from .view import (contact_list_view,
                    contact_info_view,
                    contact_edit_view,
                    contact_delete_view,
-                   group_list_view)
+                   group_list_view,
+                   group_edit_view)
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
@@ -32,7 +33,8 @@ urlpatterns = [
     path('delete/<int:cid>', contact_delete_view.contact_delete, name='contact-delete'),
 
     # Groups
-    path('groups', group_list_view.GroupList.as_view(), name='group-list'),
+    path('groups/', group_list_view.GroupList.as_view(), name='group-list'),
+    path('group-modify/', group_edit_view.GroupEdit.as_view(), name='group-edit'),
 ]
 
 if settings.DEBUG:
