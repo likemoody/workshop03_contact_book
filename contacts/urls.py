@@ -22,8 +22,6 @@ from .view import (contact_list_view,
                    group_edit_view,
                    group_delete_view)
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     # Contacts
@@ -38,6 +36,3 @@ urlpatterns = [
     path('group-modify/', group_edit_view.GroupEdit.as_view(), name='group-edit'),
     path('group-delete/<int:gid>', group_delete_view.group_delete, name='group-delete'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

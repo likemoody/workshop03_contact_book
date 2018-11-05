@@ -5,10 +5,16 @@
 {% block content %}
     <h2>{{ contact.first_name }} {{ contact.last_name }}</h2>
     <div>
+        <img src="{{ contact.profile_img.url }}" alt="{{ contact.first_name }}'s profile photo" width="240">
         {% if contact.description %}
         <p><b>Description:</b> {{ contact.description }}</p>
         {% endif %}
-        <p><b>Group:</b> {{ group }}</p>
+        <p>
+            <b>Groups:</b><br>
+            {% for group in groups %}
+                {{ group }}<br>
+            {% endfor %}
+        </p>
     </div>
     <a href="{% url 'contact-edit' %}?cid={{ contact.id }}" class="btn btn-outline-primary" id="edit">Edit</a>
     <a href="{% url 'contact-delete' contact.id %}" class="btn btn-outline-danger" id="delete">Delete</a>

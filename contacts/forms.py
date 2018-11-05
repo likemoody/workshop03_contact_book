@@ -7,9 +7,9 @@ class PersonAddForm(ModelForm):
     class Meta:
         model = Person
         fields = ['first_name', 'last_name', 'description', 'profile_img', 'group']
-        # widgets = {
-        #     'group': forms.Select,  # TODO no1: make possible to select multiple >> CheckboxSelectMultiple
-        # }
+        widgets = {
+            'group': forms.CheckboxSelectMultiple,
+        }
 
 
 class GroupForm(forms.Form):

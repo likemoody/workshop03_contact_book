@@ -124,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'                             # where to serve ALL STATIC files on the web
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')      # where to store ALL STATIC files on the server side
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')     # where to store ALL STATIC files on the server side
 
 MEDIA_URL = '/media/'                               # where to serve MEDIA files on the web
-MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')     # where to store MEDIA files on the server side
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')       # where to store MEDIA files on the server side

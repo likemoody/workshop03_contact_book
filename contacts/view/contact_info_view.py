@@ -8,6 +8,7 @@ class ContactInfo(View):
 
     def get(self, request, cid):
         contact = Person.objects.get(pk=cid)
-        group = contact.group.first()
-        return render(request, self.template_name, {'contact': contact, 'group': group})
+        groups = contact.group.all()
+        return render(request, self.template_name, {'contact': contact,
+                                                    'groups': groups})
 
