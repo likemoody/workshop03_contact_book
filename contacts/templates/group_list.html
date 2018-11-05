@@ -4,26 +4,48 @@
 
 {% block content %}
     <div class="col-md-12">
+        {% if groups %}
         <table class="table table-striped no-top-border">
             <thead>
-                <tr>
-                    <th scope="col" class="column-fit text-secondary">No</th>
-                    <th scope="col" class="text-secondary">Name</th>
-                    <th scope="col" class="column-max text-secondary"></th>
-                    <th scope="col" class="column-max text-secondary"></th>
-                </tr>
+            <tr>
+                <th scope="col" class="column-fit text-secondary">No</th>
+                <th scope="col" class="text-secondary">Name</th>
+                <th scope="col" class="column-max text-secondary"></th>
+                <th scope="col" class="column-max text-secondary"></th>
+            </tr>
             </thead>
             <tbody>
-                {% for group in groups %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td><b>{{ group.name }}</b></td>
-                        <td><a href="{% url 'group-edit' %}?gid={{ group.id }}" class="btn btn-outline-primary" id="edit">Edit</a></td>
-                        <td><a href="#" class="btn btn-outline-danger" id="delete">Delete</a></td>
-                    </tr>
-                {% endfor %}
+            {% for group in groups %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><b>{{ group.name }}</b></td>
+                    <td><a href="{% url 'group-edit' %}?gid={{ group.id }}" class="btn btn-outline-primary" id="edit">Edit</a>
+                    </td>
+                    <td><a href="{% url 'group-delete' group.id %}" class="btn btn-outline-danger"
+                           id="delete">Delete</a></td>
+                </tr>
+            {% endfor %}
             </tbody>
             <tfoot></tfoot>
         </table>
+        {% else %}
+            <br>
+            <p>There are no groups in your contact book</p>
+        {% endif %}
+        <div>
+            <br>
+            <h5>Add group</h5>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper form-group">
+                    {{ form.name.errors }}
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                    <button type="submit" value="submit">Add</button>
+                </div>
+
+            </form>
+        </div>
     </div>
-{%  endblock %}
+{% endblock %}
