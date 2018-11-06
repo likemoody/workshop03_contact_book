@@ -5,4 +5,5 @@ __pycache__/
 contacts/migrations/
 notes.txt
 .DS_Store
+media/
 profile_images/*

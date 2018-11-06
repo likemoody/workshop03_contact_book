@@ -28,7 +28,7 @@ urlpatterns = [
     path('', contact_list_view.ContactList.as_view(), name='home'),
     path('new/', contact_add_view.ContactAdd.as_view(), name='contact-new'),
     path('show/<int:cid>', contact_info_view.ContactInfo.as_view(), name='contact-info'),
-    path('modify/', contact_edit_view.ContactEdit.as_view(), name='contact-edit'),
+    path('modify/<int:cid>', contact_edit_view.ContactEdit.as_view(), name='contact-edit'),
     path('delete/<int:cid>', contact_delete_view.contact_delete, name='contact-delete'),
 
     # Groups

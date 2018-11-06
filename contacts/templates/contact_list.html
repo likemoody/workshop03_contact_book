@@ -22,7 +22,9 @@
                 <td><a href="{% url 'contact-info' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}</a>
                 </td>
                 <td>{{ contact.description }}</td>
-                <td><a href="{% url 'contact-edit' %}?cid={{ contact.id }}" class="btn btn-outline-primary" id="edit">Edit</a>
+{#                <td><a href="{% url 'contact-edit' %}?cid={{ contact.id }}" class="btn btn-outline-primary" id="edit">Edit</a>#}
+{#                </td>#}
+                <td><a href="{% url 'contact-edit' contact.id %}" class="btn btn-outline-primary" id="edit">Edit</a>
                 </td>
                 <td><a href="{% url 'contact-delete' contact.id %}" class="btn btn-outline-danger"
                        id="delete">Delete</a></td>

@@ -16,6 +16,6 @@
             {% endfor %}
         </p>
     </div>
-    <a href="{% url 'contact-edit' %}?cid={{ contact.id }}" class="btn btn-outline-primary" id="edit">Edit</a>
+    <a href="{% url 'contact-edit' contact.id %}" class="btn btn-outline-primary" id="edit">Edit</a>
     <a href="{% url 'contact-delete' contact.id %}" class="btn btn-outline-danger" id="delete">Delete</a>
 {% endblock %}

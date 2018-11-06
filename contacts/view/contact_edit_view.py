@@ -9,8 +9,8 @@ from ..forms import PersonAddForm
 class ContactEdit(View):
     template_name = 'contact_edit.html'
 
-    def get(self, request):
-        contact = Person.objects.get(pk=request.GET.get('cid'))
+    def get(self, request, cid):
+        contact = Person.objects.get(pk=cid)
         first_name = contact.first_name
         last_name = contact.last_name
         description = contact.description
@@ -18,14 +18,13 @@ class ContactEdit(View):
         group = contact.group.first()
         form = PersonAddForm(initial={'first_name': first_name,
                                       'last_name': last_name,
-                                      'description': description,
-                                      'profile_img': profile_img,  # TODO server the image
+                                      'description': description,  # TODO server the image
                                       'group': group})
 
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, 'profile_image': profile_img})
 
-    def post(self, request):
-        contact_been_modified = Person.objects.get(pk=request.GET.get('cid'))
+    def post(self, request, cid):
+        contact_been_modified = Person.objects.get(pk=cid)
         form = PersonAddForm(request.POST, request.FILES, instance=contact_been_modified)
         if form.is_valid():
             print(':: Contact data modified ::')

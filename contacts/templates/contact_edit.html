@@ -5,6 +5,13 @@
 
 {% block content %}
     <div class="">
+        <br>
+        <h2>{{form.first_name.value}} {{form.last_name.value}}</h2>
+
+        <img src="{{ profile_image.url }}" alt="{{form.first_name.value}}'s profile picture" width="240"/>
+        <br>
+        <br>
+
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -12,6 +19,7 @@
                 {{ form.first_name.errors }}
                 {{form.first_name.label_tag}}
                 {{form.first_name}}
+
             </div>
             <div class="fieldWrapper form-group">
                 {{ form.last_name.errors }}
