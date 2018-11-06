@@ -5,9 +5,11 @@
 {% block content %}
     <h2>{{ contact.first_name }} {{ contact.last_name }}</h2>
     <div>
-        <img src="{{ contact.profile_img.url }}" alt="{{ contact.first_name }}'s profile photo" width="240">
+        {% if contact.profile_img %}
+            <img src="{{ contact.profile_img.url }}" alt="{{ contact.first_name }}'s profile photo" width="240">
+        {% endif %}
         {% if contact.description %}
-        <p><b>Description:</b> {{ contact.description }}</p>
+            <p><b>Description:</b> {{ contact.description }}</p>
         {% endif %}
         <p>
             <b>Groups:</b><br>

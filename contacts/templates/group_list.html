@@ -5,29 +5,32 @@
 {% block content %}
     <div class="col-md-12">
         {% if groups %}
-        <table class="table table-striped no-top-border">
-            <thead>
-            <tr>
-                <th scope="col" class="column-fit text-secondary">No</th>
-                <th scope="col" class="text-secondary">Name</th>
-                <th scope="col" class="column-max text-secondary"></th>
-                <th scope="col" class="column-max text-secondary"></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for group in groups %}
+            <br>
+            <h2>List of groups</h2>
+            <table class="table table-striped no-top-border">
+                <thead>
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td><b>{{ group.name }}</b></td>
-                    <td><a href="{% url 'group-edit' %}?gid={{ group.id }}" class="btn btn-outline-primary" id="edit">Edit</a>
-                    </td>
-                    <td><a href="{% url 'group-delete' group.id %}" class="btn btn-outline-danger"
-                           id="delete">Delete</a></td>
+                    <th scope="col" class="column-fit text-secondary">No</th>
+                    <th scope="col" class="text-secondary">Name</th>
+                    <th scope="col" class="column-max text-secondary"></th>
+                    <th scope="col" class="column-max text-secondary"></th>
                 </tr>
-            {% endfor %}
-            </tbody>
-            <tfoot></tfoot>
-        </table>
+                </thead>
+                <tbody>
+                {% for group in groups %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><b>{{ group.name }}</b></td>
+                        <td><a href="{% url 'group-edit' %}?gid={{ group.id }}" class="btn btn-outline-primary"
+                               id="edit">Edit</a>
+                        </td>
+                        <td><a href="{% url 'group-delete' group.id %}" class="btn btn-outline-danger"
+                               id="delete">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot></tfoot>
+            </table>
         {% else %}
             <br>
             <p>There are no groups in your contact book</p>

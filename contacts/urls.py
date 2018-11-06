@@ -20,7 +20,8 @@ from .view import (contact_list_view,
                    contact_delete_view,
                    group_list_view,
                    group_edit_view,
-                   group_delete_view)
+                   group_delete_view,
+                   contact_search_view)
 from django.urls import path
 
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
     path('show/<int:cid>', contact_info_view.ContactInfo.as_view(), name='contact-info'),
     path('modify/<int:cid>', contact_edit_view.ContactEdit.as_view(), name='contact-edit'),
     path('delete/<int:cid>', contact_delete_view.contact_delete, name='contact-delete'),
+    path('group-search/', contact_search_view.ContactSearch.as_view(), name='contact-search'),
 
     # Groups
     path('groups/', group_list_view.GroupList.as_view(), name='group-list'),

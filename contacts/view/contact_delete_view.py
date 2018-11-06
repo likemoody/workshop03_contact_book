@@ -8,7 +8,10 @@ from django.conf import settings
 def contact_delete(request, cid):
     try:
         contact_to_delete = Person.objects.get(pk=cid)
-        os.remove(f"{settings.BASE_DIR}{contact_to_delete.profile_img.url}")
+        try:
+            os.remove(f"{settings.BASE_DIR}{contact_to_delete.profile_img.url}")
+        except:
+            pass
         contact_to_delete.delete()
         messages.success(request, 'Contact has been removed')
         return redirect('home')

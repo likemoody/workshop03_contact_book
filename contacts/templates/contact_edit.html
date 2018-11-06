@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title%}  {% endblock %}
+{% block title %}  {% endblock %}
 
 
 {% block content %}
     <div class="">
         <br>
-        <h2>{{form.first_name.value}} {{form.last_name.value}}</h2>
-
-        <img src="{{ profile_image.url }}" alt="{{form.first_name.value}}'s profile picture" width="240"/>
-        <br>
+        <h2>{{ form.first_name.value }} {{ form.last_name.value }}</h2>
+        {% if contact.profile_img %}
+        <img src="{{ profile_image.url }}" alt="{{ form.first_name.value }}'s profile picture" width="240"/>
+        {% endif %}
         <br>
 
         <form method="post" enctype="multipart/form-data">
@@ -17,29 +17,29 @@
             {{ form.non_field_errors }}
             <div class="fieldWrapper form-group">
                 {{ form.first_name.errors }}
-                {{form.first_name.label_tag}}
-                {{form.first_name}}
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
 
             </div>
             <div class="fieldWrapper form-group">
                 {{ form.last_name.errors }}
-                {{form.last_name.label_tag}}
-                {{form.last_name}}
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
             </div>
             <div class="fieldWrapper form-group">
                 {{ form.description.errors }}
-                {{form.description.label_tag}}
-                {{form.description}}
+                {{ form.description.label_tag }}
+                {{ form.description }}
             </div>
             <div class="fieldWrapper form-group">
                 {{ form.profile_img.errors }}
-                {{form.profile_img.label_tag}}
-                {{form.profile_img}}
+                {{ form.profile_img.label_tag }}
+                {{ form.profile_img }}
             </div>
             <div class="fieldWrapper form-group">
                 {{ form.group.errors }}
-                {{form.group.label_tag}}
-                {{form.group}}
+                {{ form.group.label_tag }}
+                {{ form.group }}
             </div>
             <button type="submit" value="submit">Send</button>
         </form>

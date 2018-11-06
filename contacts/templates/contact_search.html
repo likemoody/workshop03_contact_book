@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Search the contacts {% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Search Contact</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper form-group">
+            {{ form.first_name.errors }}
+            {#            {{ form.first_name.label_tag }}#}
+            {{ form.first_name }}
+            {{ form.last_name.errors }}
+            {#            {{ form.last_name.label_tag }}#}
+            {{ form.last_name }}
+            <button type="submit" value="submit">Search</button>
+        </div>
+        {% if results %}
+            <h2>Results:</h2>
+            <ol>
+                {% for result in results %}
+                    <li><a href="{% url 'contact-info' result.id %}">{{ result.first_name }} {{ result.last_name }}</a></li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    </form>
+{% endblock %}
