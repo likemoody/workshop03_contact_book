@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Add address {% endblock %}
+
+{% block content %}
+    <div class="">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% if form.city %}
+            <h2>Add new address</h2>
+                <div class="fieldWrapper form-group">
+                    {{ form.city.label_tag }}
+                    {{ form.city }}
+                </div>
+                <div class="fieldWrapper form-group">
+                    {{ form.street.label_tag }}
+                    {{ form.street }}
+                    {{ form.building_no.label_tag }}
+                    {{ form.building_no }}
+                    {{ form.apt_no.label_tag }}
+                    {{ form.apt_no }}
+                </div>
+                <div class="fieldWrapper form-group">
+                    {{ form.label.label_tag }}
+                    {{ form.label }}
+                </div>
+            {% elif form.tel_no %}
+            <h2>Add new telephone number</h2>
+                <div class="fieldWrapper form-group">
+                    {{ form.tel_no.label_tag }}
+                    {{ form.tel_no }}
+                    {{ form.label.label_tag }}
+                    {{ form.label }}
+                </div>
+            {% elif form.email %}
+            <h2>Add new email</h2>
+                <div class="fieldWrapper form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {{ form.label.label_tag }}
+                    {{ form.label }}
+                </div>
+            {% endif %}
+            <button type="submit" value="submit">Send</button>
+        </form>
+    </div>
+{% endblock content %}

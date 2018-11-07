@@ -7,6 +7,7 @@ class Person(models.Model):
     description = models.CharField(max_length=512, blank=True)
     profile_img = models.ImageField(upload_to='profile_images/', blank=True)
     group = models.ManyToManyField('Group')
+    address = models.ManyToManyField('Address')
 
     def __repr__(self):
         return f'Person({self.first_name})'
@@ -22,7 +23,7 @@ class Address(models.Model):
     apt_no = models.IntegerField()
     label = models.CharField(max_length=32, blank=False)
 
-    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='person_id_address')
+    # person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='person_id_address')
 
     def __repr__(self):
         return f'Address({self.city} {self.street})'

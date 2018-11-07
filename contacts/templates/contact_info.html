@@ -11,12 +11,36 @@
         {% if contact.description %}
             <p><b>Description:</b> {{ contact.description }}</p>
         {% endif %}
-        <p>
-            <b>Groups:</b><br>
+        <h5>Groups:</h5>
+        <ul>
             {% for group in groups %}
-                {{ group }}<br>
+                <li>{{ group }}</li>
             {% endfor %}
-        </p>
+        </ul>
+    </div>
+    <div>
+        <h5>Telephones:</h5>
+        <ul>
+            {% for telephone in telephones %}
+                <li><i>{{ telephone.label }}:</i> {{ telephone.tel_no }}</li>
+            {% endfor %}
+        </ul>
+
+        <h5>Emails:</h5>
+        <ul>
+            {% for email in emails %}
+                <li><i>{{ email.label }}:</i> {{ email.email }}</li>
+            {% endfor %}
+        </ul>
+
+        <h5>Places:</h5>
+        <ol>
+            {% for address in addresses %}
+                <li>
+                    <i>{{ address.label }}</i> {{ address.city }} {{ address.street }} {{ address.building_no }}/{{ address.apt_no }}
+                </li>
+            {% endfor %}
+        </ol>
     </div>
     <a href="{% url 'contact-edit' contact.id %}" class="btn btn-outline-primary" id="edit">Edit</a>
     <a href="{% url 'contact-delete' contact.id %}" class="btn btn-outline-danger" id="delete">Delete</a>

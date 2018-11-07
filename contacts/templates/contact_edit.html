@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}  {% endblock %}
+{% block title %} Edit contact {% endblock %}
 
 
 {% block content %}
     <div class="">
-        <br>
         <h2>{{ form.first_name.value }} {{ form.last_name.value }}</h2>
         {% if contact.profile_img %}
-        <img src="{{ profile_image.url }}" alt="{{ form.first_name.value }}'s profile picture" width="240"/>
+            <img src="{{ profile_image.url }}" alt="{{ form.first_name.value }}'s profile picture" width="240"/>
         {% endif %}
-        <br>
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -19,7 +17,6 @@
                 {{ form.first_name.errors }}
                 {{ form.first_name.label_tag }}
                 {{ form.first_name }}
-
             </div>
             <div class="fieldWrapper form-group">
                 {{ form.last_name.errors }}
@@ -43,5 +40,29 @@
             </div>
             <button type="submit" value="submit">Send</button>
         </form>
+    </div><br>
+    <div>
+        <h5>Telephones:</h5>
+        <ul>
+            {% for telephone in telephones %}
+                <li><i>{{ telephone.label }}:</i> {{ telephone.tel_no }}</li>
+            {% endfor %}
+        </ul>
+
+        <h5>Emails:</h5>
+        <ul>
+            {% for email in emails %}
+                <li><i>{{ email.label }}:</i> {{ email.email }}</li>
+            {% endfor %}
+        </ul>
+
+        <h5>Places:</h5>
+        <ol>
+            {% for address in addresses %}
+                <li>
+                    <i>{{ address.label }}</i> {{ address.city }} {{ address.street }} {{ address.building_no }}/{{ address.apt_no }}
+                </li>
+            {% endfor %}
+        </ol>
     </div>
 {% endblock content %}

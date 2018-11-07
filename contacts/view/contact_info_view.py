@@ -9,6 +9,12 @@ class ContactInfo(View):
     def get(self, request, cid):
         contact = Person.objects.get(pk=cid)
         groups = contact.group.all()
+        addresses = contact.address.all()
+        emails = contact.person_id_email.all()
+        telephones = contact.person_id_tel.all()
         return render(request, self.template_name, {'contact': contact,
-                                                    'groups': groups})
+                                                    'groups': groups,
+                                                    'addresses': addresses,
+                                                    'emails': emails,
+                                                    'telephones': telephones})
 
